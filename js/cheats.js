@@ -35,7 +35,21 @@ class BitLifeCheats {
         this.createCheatsPanel();
         this.setupHotkeys();
         this.setupUnityHooks();
+        this.loadAdvancedCheats();
         console.log('%c[BitLife Cheats] Initialized! Press Ctrl+Shift+C to toggle panel', 'color: #00ff00; font-weight: bold; font-size: 14px;');
+    }
+
+    loadAdvancedCheats() {
+        // Dynamically load advanced cheats
+        const script = document.createElement('script');
+        script.src = 'js/advanced-cheats.js';
+        script.onload = () => {
+            console.log('%c[BitLife] Advanced features loaded', 'color: #00ffff;');
+        };
+        script.onerror = () => {
+            console.warn('[BitLife] Advanced features not available');
+        };
+        document.head.appendChild(script);
     }
 
     createCheatsPanel() {
